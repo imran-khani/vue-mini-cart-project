@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue js</title>
+    <style>
+      [v-cloak] {
+        display: none;
+      }
+    </style>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap");
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app" v-cloak>
+      <button @click="openCart" id="cartButton">
+        <i class="fas fa-shopping-cart"></i> Open Cart
+      </button>
+      <div class="products">
+        <div class="product" v-for="(product) in products " ::key="product.id">
+          <div class="product-img">
+            <img :src="product.image" alt="Product" />
+          </div>
+          <div class="product-details">
+            <span class="product-title"> {{product.title}} </span>
+            <span style="margin: 10px 0; font-weight: bold">
+              {{product.price}}
+            </span>
+          </div>
+          <button @click="addToCart(product)" class="add-to-cart">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <div id="cart" class="cart">
+        <div class="cart-header">
+          <span>Shopping Cart</span>
+          <button @click="closeCart" id="closeButton">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="cart-content">
+          <p v-if="cart.length===0">Your cart is empty.</p>
+          <div class="cart-item" v-for="(item) in cart" ::key="item.id">
+           <div class="cart-img">
+            <img :src="item.image" />
+           </div>
+            <div class="cart-item-details">
+              <span class="cart-item-title">{{item.title}}</span>
+              <span class="cart-item-price">{{item.price}}</span>
+            </div>
+            <button @click="removeFromCart(item.id)" class="remove-from-cart">
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <script src="app.js"></script>
+  </body>
+</html>
