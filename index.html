@@ -45,6 +45,9 @@
       </div>
 
       <div id="cart" class="cart">
+         <div class="toast">
+          
+         </div>
         <div class="cart-header">
           <span>Shopping Cart</span>
           <button @click="closeCart" id="closeButton">
@@ -61,7 +64,8 @@
               <span class="cart-item-title">{{item.title}}</span>
               <span class="cart-item-price">{{item.price}}</span>
             </div>
-            <button @click="removeFromCart(item.id)" class="remove-from-cart">
+            <button
+             @click="removeFromCart(item.id)" class="remove-from-cart">
               <i class="fas fa-trash"></i>
             </button>
           </div>
